@@ -1,0 +1,62 @@
+spring:
+  application:
+    name: crypto-alert
+
+  # H2 Database
+  datasource:
+    url: jdbc:h2:mem:cryptoalert
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# OKX API 설정
+okx:
+  rest:
+    base-url: https://www.okx.com
+  websocket:
+    url: wss://ws.okx.com:8443/ws/v5/business
+
+# 알림 설정
+alert:
+  # 시총 TOP 20 코인
+  targets: BTC,ETH,SOL,BNB,XRP,ADA,DOGE,AVAX,DOT,MATIC,LINK,UNI,ATOM,LTC,ETC,FIL,APT,ARB,OP,NEAR
+  timeframe: 15m
+  ema-periods: 20,80,320,1920
+  atr-period: 20
+
+# 쿨다운 설정
+cooldown:
+  alignment-warning: 4h
+  entry-important: 4h
+  entry-confirm: 1h
+
+# 스케줄 설정
+schedule:
+  # 매일 7시, 22시 (KST)
+  summary-cron: "0 0 7,22 * * *"
+  summary-timezone: Asia/Seoul
+
+# 카카오톡 알림 설정
+notification:
+  kakao:
+    client-id: ${KAKAO_CLIENT_ID:}
+    redirect-uri: ${KAKAO_REDIRECT_URI:}
+
+# 로깅
+logging:
+  level:
+    com.sungjun.cryptoalert: INFO
+    org.springframework.web: INFO
