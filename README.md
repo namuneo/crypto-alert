@@ -258,7 +258,7 @@ notification:
 - OKX 계정 (API 키 불필요 — 공개 데이터만 사용)
 - 카카오톡 REST API 키
 
-### Run
+### Quick Start
 
 ```bash
 # 1. Clone
@@ -271,7 +271,16 @@ cp .env.example .env
 
 # 3. Build & Run
 ./gradlew bootRun
+
+# 4. 카카오톡 인증 (브라우저)
+# http://localhost:8080/api/kakao/auth
+
+# 5. 동작 확인
+curl http://localhost:8080/api/test/health
+curl http://localhost:8080/api/test/ema/BTC
 ```
+
+자세한 내용은 [QUICKSTART.md](QUICKSTART.md)와 [API.md](API.md)를 참조하세요.
 
 ---
 
@@ -319,14 +328,9 @@ cp .env.example .env
 
 ## 🗺️ Roadmap
 
-- [ ] Phase 1 — Core: OKX 데이터 수집 + EMA 계산 + 콘솔 출력
-- [ ] Phase 2 — Alert: 카카오톡 알림 연동
-- [ ] Phase 3 — Entry: 매매 타점 알림 (중요/확인)
-- [ ] Phase 4 — Polish: 쿨다운 + H2 알림 이력 + 에러 핸들링
-- [ ] Phase 5 — Deploy: Docker 컨테이너화 + 클라우드 배포 (선택)
+- [x] Phase 1 — Core: OKX 데이터 수집 + EMA 계산 + 콘솔 출력 ✅
+- [x] Phase 2 — Alert: 카카오톡 알림 연동 ✅
+- [x] Phase 3 — Entry: 매매 타점 알림 (중요/확인) ✅
+- [x] Phase 4 — Polish: 쿨다운 + H2 알림 이력 + 에러 핸들링 ✅
+- [ ] Phase 5 — Deploy: Docker 컨테이너화 + 클라우드 배포 (진행예정)
 
----
-
-## 📄 License
-
-MIT License
